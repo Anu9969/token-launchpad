@@ -1,3 +1,4 @@
+import { SystemProgram, Transaction } from "@solana/web3.js";
 
 
 export function TokenLaunchpad() {
@@ -9,6 +10,23 @@ export function TokenLaunchpad() {
         const keypair = Keypair.generate();
 
         //you create a new mint account
+        //you first create a keypair for this new mint account
+        //owners
+
+        const transaction = new Transaction().add(
+            SystemProgram.createAccount({
+                fromPubkey: payer.publicKey,
+                newAccountPubkey:keypair.publicKey,
+                space: MINT_SIZE,
+                lamports,
+                programId,  //who owns this account
+            }),
+            createInitializeMint2Instruction(keypair.publicKey ,decimals,mintAuthority, freezeAuthority, programId)
+        );
+
+        transaction.partialSign(keypair);
+
+        await wallet.signTransaction(transaction);
     }
 
     return  <div style={{
