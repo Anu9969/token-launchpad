@@ -11,6 +11,7 @@ import '@solana/wallet-adapter-react-ui/styles.css'
 function App() {
   return (
     <div style={{width: "100vw"}}>
+    
     <ConnectionProvider endpoint ="https://api.devnet.solana.com" >
       <WalletProvider wallets ={[]}>
         <WalletModalProvider>
