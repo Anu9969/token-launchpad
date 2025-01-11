@@ -1,5 +1,5 @@
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { TokenLaunchpad } from './components/TokenLaunchpad';
+import { MeraToken, TokenLaunchpad } from './components/TokenLaunchpad';
 import {
     WalletModalProvider,
     WalletMultiButton,
@@ -27,7 +27,7 @@ function App() {
           </div>
 
 
-        <TokenLaunchpad></TokenLaunchpad>
+        <MeraToken></MeraToken>
 
 
 
